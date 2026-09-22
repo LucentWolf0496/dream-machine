@@ -1,0 +1,32 @@
+[
+  {
+    "id": "tree_001",
+    "style": "fairy_town",
+    "root": {
+      "id": "node_001",
+      "type": "leaf",
+      "content": "把学校道路看作 I/O 总线，幻视每人为一个往返的 0x 地址",
+      "createdAt": "2026-09-20T14:30:00Z",
+      "children": [
+        {
+          "id": "node_002",
+          "type": "branch",
+          "content": "延伸：如果每个人是地址，那么相遇就是总线冲突？",
+          "createdAt": "2026-09-20T15:00:00Z",
+          "children": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "tree_002",
+    "style": "fairy_town",
+    "root": {
+      "id": "node_003",
+      "type": "leaf",
+      "content": "关于时间与记忆：时间不是线性的，记忆是时间的折叠",
+      "createdAt": "2026-09-19T22:00:00Z",
+      "children": []
+    }
+  }
+]

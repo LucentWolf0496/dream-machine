@@ -1,0 +1,18 @@
+﻿/* ===== 硅基阵 - 硬科幻荧光蓝主题 ===== */
+[data-theme="silicon"] {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #111827;
+  --accent: #00d4ff;
+  --accent-dim: #00d4ff44;
+  --text-primary: #e0f2fe;
+  --text-secondary: #94a3b8;
+  --border: #1e3a5f;
+  --glow: 0 0 10px #00d4ff88;
+  --glow-strong: 0 0 20px #00d4ffaa;
+  --font: 'JetBrains Mono', 'Fira Code', monospace;
+  --card-bg: #111827cc;
+  --card-radius: 6px;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+}

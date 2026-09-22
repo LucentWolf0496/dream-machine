@@ -1,0 +1,13 @@
+{
+  "nodes": [
+    { "id": "n1", "label": "狼与猫的人格变换", "category": "personality", "locked": false, "size": 30 },
+    { "id": "n2", "label": "红黑&蓝绿黄的生命思考", "category": "life", "locked": true, "size": 25 },
+    { "id": "n3", "label": "内心世界的草原湖泊计算机", "category": "inner", "locked": false, "size": 28 },
+    { "id": "n4", "label": "《机芯》小说碎片", "category": "writing", "locked": true, "size": 22 }
+  ],
+  "links": [
+    { "source": "n1", "target": "n2", "label": "对立统一", "locked": false },
+    { "source": "n1", "target": "n3", "label": "自我隐喻", "locked": false },
+    { "source": "n2", "target": "n4", "label": "创作映射", "locked": false }
+  ]
+}

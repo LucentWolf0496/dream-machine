@@ -1,0 +1,18 @@
+﻿/* ===== 天狼星 - 太空宇宙深空主题 ===== */
+[data-theme="sirius"] {
+  --bg-primary: #050510;
+  --bg-secondary: #0a0a20;
+  --accent: #a78bfa;
+  --accent-dim: #a78bfa44;
+  --text-primary: #e9d5ff;
+  --text-secondary: #7c3aed;
+  --border: #2e1065;
+  --glow: 0 0 20px #a78bfa66;
+  --glow-strong: 0 0 30px #a78bfa88;
+  --font: 'Orbitron', 'Exo 2', sans-serif;
+  --card-bg: #0a0a20cc;
+  --card-radius: 8px;
+  --success: #a78bfa;
+  --warning: #fbbf24;
+  --danger: #f87171;
+}

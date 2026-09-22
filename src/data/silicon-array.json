@@ -1,0 +1,35 @@
+[
+  {
+    "id": "task_001",
+    "name": "CSAPP Data Lab",
+    "course": "计算机系统基础",
+    "type": "lab",
+    "difficulty": 8,
+    "ddl": "2026-10-15T23:59:59Z",
+    "createdAt": "2026-09-20T10:00:00Z",
+    "completed": false,
+    "notes": "位操作与浮点数实验"
+  },
+  {
+    "id": "task_002",
+    "name": "线性代数期中复习",
+    "course": "线性代数",
+    "type": "exam",
+    "difficulty": 6,
+    "ddl": "2026-11-01T23:59:59Z",
+    "createdAt": "2026-09-18T08:00:00Z",
+    "completed": false,
+    "notes": "重点：特征值与特征向量"
+  },
+  {
+    "id": "task_003",
+    "name": "数据结构课程设计",
+    "course": "数据结构",
+    "type": "project",
+    "difficulty": 7,
+    "ddl": "2026-12-20T23:59:59Z",
+    "createdAt": "2026-09-15T12:00:00Z",
+    "completed": false,
+    "notes": "实现一个简易数据库引擎"
+  }
+]

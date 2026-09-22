@@ -1,0 +1,18 @@
+﻿/* ===== 入梦园 - 童话小镇暖色主题 ===== */
+[data-theme="dream"] {
+  --bg-primary: #fdf6e3;
+  --bg-secondary: #f5e6d3;
+  --accent: #e07a5f;
+  --accent-dim: #e07a5f44;
+  --text-primary: #3d405b;
+  --text-secondary: #81b29a;
+  --border: #e0c9a6;
+  --glow: none;
+  --glow-strong: none;
+  --font: 'Nunito', 'Quicksand', sans-serif;
+  --card-bg: #ffffffcc;
+  --card-radius: 12px;
+  --success: #81b29a;
+  --warning: #f2cc8f;
+  --danger: #e07a5f;
+}
