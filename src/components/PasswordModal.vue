@@ -73,6 +73,9 @@ async function submit() {
     if (targetRoute.value) {
       router.push(targetRoute.value.path)
     }
+  } else if (result && result.unconfigured) {
+    error.value = '密码尚未配置，请设置构建环境变量'
+    triggerShake()
   } else if (result && result.locked) {
     error.value = `已锁定，请等待 ${result.remaining} 秒`
     triggerShake()

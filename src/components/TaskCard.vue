@@ -28,6 +28,7 @@
 import { computed } from 'vue'
 import { computePriority } from '@/utils/priority.js'
 import { isAdmin } from '@/stores/auth.js'
+import { taskState } from '@/stores/tasks.js'
 
 const props = defineProps({ task: Object })
 defineEmits(['toggle', 'edit', 'delete'])
@@ -49,7 +50,7 @@ const ddlText = computed(() => {
 })
 
 const score = computed(() => {
-  return Math.round(computePriority(props.task))
+  return Math.round(computePriority(props.task, taskState.weights))
 })
 </script>
 

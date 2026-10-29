@@ -8,6 +8,7 @@
       </div>
       <div class="header-right">
         <button v-if="isAdmin()" class="btn-add" @click="showForm = true">+ 新任务</button>
+        <AdminEntry />
         <ThemeSwitcher />
       </div>
     </header>
@@ -69,12 +70,13 @@
 
 <script setup>
 import { ref, computed, inject, onMounted } from 'vue'
-import { taskState, getSortedTasks, addTask, updateTask, deleteTask, toggleComplete, updateWeights } from '@/stores/tasks.js'
+import { taskState, getSortedTasks, addTask, updateTask, deleteTask, toggleComplete, updateWeights, replaceTasks } from '@/stores/tasks.js'
 import { isAdmin } from '@/stores/auth.js'
 import { exportJSON, importJSON } from '@/utils/storage.js'
 import TaskCard from '@/components/TaskCard.vue'
 import TaskForm from '@/components/TaskForm.vue'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
+import AdminEntry from '@/components/AdminEntry.vue'
 
 const currentTheme = inject('currentTheme')
 onMounted(() => { currentTheme.value = 'silicon' })
@@ -118,7 +120,7 @@ async function importData(e) {
   if (!file) return
   try {
     const data = await importJSON(file)
-    taskState.tasks = data
+    replaceTasks(data)
   } catch (err) {
     alert('导入失败：JSON 格式错误')
   }

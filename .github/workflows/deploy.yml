@@ -14,6 +14,10 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
+        env:
+          VITE_LUCENT_HASH: ${{ secrets.VITE_LUCENT_HASH }}
+          VITE_DEEP_HASH: ${{ secrets.VITE_DEEP_HASH }}
+          VITE_ADMIN_HASH: ${{ secrets.VITE_ADMIN_HASH }}
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

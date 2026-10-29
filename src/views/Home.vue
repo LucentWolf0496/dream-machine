@@ -22,6 +22,7 @@
       </button>
     </nav>
     <footer class="footer">
+      <AdminEntry />
       <ThemeSwitcher />
     </footer>
   </div>
@@ -32,6 +33,7 @@ import { inject, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { authGuard, isAdmin } from '@/stores/auth.js'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
+import AdminEntry from '@/components/AdminEntry.vue'
 
 const router = useRouter()
 const currentTheme = inject('currentTheme')
@@ -131,5 +133,8 @@ function enterSirius() {
 }
 .footer {
   margin-top: 60px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 </style>

@@ -98,6 +98,11 @@ export function deleteTree(treeId) {
   persist()
 }
 
+export function replaceTrees(trees) {
+  dreamState.trees = Array.isArray(trees) ? trees : []
+  persist()
+}
+
 function persist() {
   saveData(STORAGE_KEY, dreamState.trees)
 }

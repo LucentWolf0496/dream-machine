@@ -8,6 +8,7 @@
       </div>
       <div class="header-right">
         <button v-if="isAdmin()" class="btn-add" @click="addNewTree">+ 新灵感树</button>
+        <AdminEntry />
         <ThemeSwitcher />
       </div>
     </header>
@@ -50,11 +51,12 @@
 
 <script setup>
 import { ref, inject, onMounted } from 'vue'
-import { dreamState, addTree, deleteTree } from '@/stores/dreams.js'
+import { dreamState, addTree, deleteTree, replaceTrees } from '@/stores/dreams.js'
 import { isAdmin } from '@/stores/auth.js'
 import { exportJSON, importJSON } from '@/utils/storage.js'
 import DreamTree from '@/components/DreamTree.vue'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
+import AdminEntry from '@/components/AdminEntry.vue'
 
 const currentTheme = inject('currentTheme')
 onMounted(() => { currentTheme.value = 'dream' })
@@ -83,7 +85,7 @@ async function importData(e) {
   if (!file) return
   try {
     const data = await importJSON(file)
-    dreamState.trees = data
+    replaceTrees(data)
   } catch { alert('导入失败') }
 }
 </script>

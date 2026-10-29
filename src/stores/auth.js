@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 import { sha256 } from '@/utils/crypto.js'
-import { PASSWORD_HASHES } from '@/config/passwords.js'
+import { PASSWORD_HASHES, isPasswordConfigured } from '@/config/passwords.js'
 
 const ACCESS_KEY = 'dream_access_level'
 
@@ -16,6 +16,10 @@ export async function tryUnlock(inputPassword, targetLevel) {
   // 防暴力：锁定检查
   if (Date.now() < authState.lockedUntil) {
     return { locked: true, remaining: Math.ceil((authState.lockedUntil - Date.now()) / 1000) }
+  }
+
+  if (!isPasswordConfigured(targetLevel)) {
+    return { unconfigured: true }
   }
 
   const hashed = await sha256(inputPassword)

@@ -60,6 +60,11 @@ export function updateWeights(weights) {
   saveData('dream_task_weights', taskState.weights)
 }
 
+export function replaceTasks(tasks) {
+  taskState.tasks = Array.isArray(tasks) ? tasks : []
+  persist()
+}
+
 function persist() {
   saveData(STORAGE_KEY, taskState.tasks)
 }

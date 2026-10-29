@@ -7,8 +7,10 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import * as d3 from 'd3'
+import { isAdmin } from '@/stores/auth.js'
 
 const props = defineProps({ data: Object })
+const emit = defineEmits(['node-click', 'link-click'])
 const svgRef = ref(null)
 
 function renderGraph() {
@@ -48,6 +50,11 @@ function renderGraph() {
     .attr('stroke', '#7c3aed')
     .attr('stroke-opacity', 0.4)
     .attr('stroke-width', 1.5)
+    .attr('cursor', 'pointer')
+    .on('click', (event, d) => {
+      event.stopPropagation()
+      if (isAdmin()) emit('link-click', links.indexOf(d))
+    })
 
   // link labels
   const linkLabel = svg.append('g')
@@ -59,6 +66,7 @@ function renderGraph() {
     .attr('fill', '#a78bfa')
     .attr('text-anchor', 'middle')
     .attr('opacity', 0.7)
+    .attr('pointer-events', 'none')
 
   // nodes
   const node = svg.append('g')
@@ -66,12 +74,15 @@ function renderGraph() {
     .data(nodes)
     .join('g')
     .attr('cursor', 'grab')
+    .on('click', (event, d) => {
+      if (isAdmin()) emit('node-click', d.id)
+    })
 
   node.append('circle')
     .attr('r', d => d.size || 20)
     .attr('fill', d => {
       if (d.id === 'sirius') return '#fbbf24'
-      if (d.locked && !d.id === 'sirius') return '#555'
+      if (d.locked) return '#555'
       return '#a78bfa'
     })
     .attr('opacity', 0.9)

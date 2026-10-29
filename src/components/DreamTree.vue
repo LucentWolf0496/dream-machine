@@ -22,8 +22,27 @@ import { addChildNode, updateNode, deleteNode } from '@/stores/dreams.js'
 const props = defineProps({ tree: Object })
 const svgRef = ref(null)
 const editNode = ref(null)
+const collapsedIds = ref(new Set())
 
-let currentData = null
+function toggleCollapse(id) {
+  const next = new Set(collapsedIds.value)
+  if (next.has(id)) {
+    next.delete(id)
+  } else {
+    next.add(id)
+  }
+  collapsedIds.value = next
+  renderTree()
+}
+
+function applyCollapsed(root) {
+  root.each(d => {
+    if (d.children && d.children.length && collapsedIds.value.has(d.data.id)) {
+      d._children = d.children
+      d.children = null
+    }
+  })
+}
 
 function renderTree() {
   if (!svgRef.value) return
@@ -35,7 +54,7 @@ function renderTree() {
   svg.attr('viewBox', [0, 0, width, height])
 
   const root = d3.hierarchy(cloneNode(props.tree.root))
-  currentData = root
+  applyCollapsed(root)
 
   const treeLayout = d3.tree().size([height - margin.top - margin.bottom, width - margin.left - margin.right])
   treeLayout(root)
@@ -61,14 +80,9 @@ function renderTree() {
     .attr('transform', d => `translate(${d.y},${d.x})`)
     .on('click', (event, d) => {
       event.stopPropagation()
-      if (d.children && d.children.length > 0) {
-        d._children = d.children
-        d.children = null
-      } else if (d._children) {
-        d.children = d._children
-        d._children = null
+      if ((d.children && d.children.length > 0) || d._children) {
+        toggleCollapse(d.data.id)
       }
-      renderTree()
     })
     .on('dblclick', (event, d) => {
       event.stopPropagation()
@@ -142,6 +156,10 @@ function deleteThis() {
   }
 }
 
+watch(() => props.tree.id, () => {
+  collapsedIds.value = new Set()
+  renderTree()
+})
 watch(() => props.tree, () => renderTree(), { deep: true })
 onMounted(() => renderTree())
 onUnmounted(() => {})
